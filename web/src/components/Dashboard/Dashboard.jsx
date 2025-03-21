@@ -1,7 +1,7 @@
 import React from 'react';
 import './Dashboard.css';
 import SensorCountWidget from '../Widgets/SensorCountWidget/SensorCountWidget';
-import ChartWidget from '../Widgets/ChartWidget/ChartWidget';
+import SensorChartWidget from '../Widgets/SensorChartWidget/SensorChartWidget';
 
 const Dashboard = () => {
   return (
@@ -9,7 +9,7 @@ const Dashboard = () => {
       <h1>P.E.IoT Dashboard</h1>
       <div className="widgets-container">
         <SensorCountWidget />
-        <ChartWidget />
+        <SensorChartWidget />
       </div>
     </div>
   );
