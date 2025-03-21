@@ -1,0 +1,78 @@
+.sensor-chart-widget {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .widget-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  .widget-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .control-group label {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .control-group select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    font-size: 14px;
+  }
+  
+  .no-data {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .widget-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .widget-controls {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+    
+    .control-group {
+      width: 100%;
+    }
+    
+    .control-group select {
+      flex-grow: 1;
+    }
+  }

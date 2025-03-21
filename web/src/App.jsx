@@ -9,7 +9,6 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          {/* Nous ajouterons d'autres routes plus tard, comme la page admin */}
         </Routes>
       </div>
     </Router>
