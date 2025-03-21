@@ -1,0 +1,38 @@
+.widget {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .widget:hover {
+    transform: translateY(-5px);
+  }
+  
+  .sensor-count-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .sensor-count-widget h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  .count-value {
+    font-size: 48px;
+    font-weight: bold;
+    color: #4a90e2;
+    margin: 20px 0;
+  }
+  
+  .sensor-count-widget.loading,
+  .sensor-count-widget.error {
+    color: #666;
+    font-style: italic;
+  }

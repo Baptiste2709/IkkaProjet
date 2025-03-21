@@ -1,3 +1,15 @@
-#root, html, body {
-  margin: 0 auto;
-}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .App {
+    min-height: 100vh;
+  }
