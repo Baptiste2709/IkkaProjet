@@ -4,27 +4,31 @@ import './Dashboard.css';
 import SensorCountWidget from '../Widgets/SensorCountWidget/SensorCountWidget';
 import SensorChartWidget from '../Widgets/SensorChartWidget/SensorChartWidget';
 import SensorGeoDistributionWidget from '../Widgets/SensorGeoDistributionWidget/SensorGeoDistributionWidget';
+import MeasurementTrendsWidget from '../Widgets/MeasurementTrendsWidget/MeasurementTrendsWidget';
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      <h1>P.E.IoT Dashboard</h1>
+      <h1>P.E.IoT Dashboard by Habib & Baptiste</h1>
       
       <div className="widgets-grid">
-        {/* Widget de comptage - occupe 1 colonne */}
         <div className="widget-container widget-small">
           <SensorCountWidget />
         </div>
         
-        {/* Widget de graphique - occupe 1 colonne */}
         <div className="widget-container widget-small">
           <SensorChartWidget />
         </div>
+
+        <div className="widget-container widget-small">
+          <MeasurementTrendsWidget />
+        </div>
         
-        {/* Widget carte de distribution géographique - occupe 2 colonnes */}
         <div className="widget-container widget-large">
           <SensorGeoDistributionWidget />
         </div>
+
+
       </div>
     </div>
   );
