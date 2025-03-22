@@ -1,36 +1,100 @@
-/* SensorChartWidget.css */
 .sensor-chart-widget {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sensor-chart-widget:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .widget-header {
-  margin-bottom: 16px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .widget-header h3 {
   margin: 0;
-  color: #333;
   font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
 .widget-content {
-  height: 300px;
+  flex-grow: 1;
+  padding: 15px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.loading {
+.widget-content.loading {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  color: #666;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* Style personnalisé pour la légende */
+.custom-legend {
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.custom-legend li {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+.legend-text {
+  font-size: 0.85rem;
+  color: #333333;
+}
+
+/* Style pour les tooltips */
+.recharts-tooltip-wrapper {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.recharts-default-tooltip {
+  background-color: white !important;
+  border: none !important;
+  border-radius: 5px;
+  padding: 8px 12px !important;
+}
+
+.recharts-tooltip-item {
+  margin-bottom: 3px;
+}
+
+/* Animation de transition pour les barres */
+.recharts-bar-rectangle {
+  transition: fill 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .custom-legend {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .custom-legend li {
+    margin: 2px 0;
+  }
 }

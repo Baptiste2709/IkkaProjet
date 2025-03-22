@@ -1,12 +1,18 @@
-// SensorChartWidget.jsx
 import React, { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import './SensorChartWidget.css';
 
 const SensorChartWidget = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Définir les couleurs pour chaque type de capteur
+  const COLORS = {
+    'Température': '#ff7300',
+    'Humidité': '#0088fe',
+    'Pollution': '#9467bd'
+  };
+  
   useEffect(() => {
     // Simule un appel API - à remplacer par ton vrai appel API plus tard
     const fetchData = async () => {
@@ -14,9 +20,9 @@ const SensorChartWidget = () => {
         // À remplacer par fetch('/api/sensors/types') plus tard
         setTimeout(() => {
           const mockData = [
-            { name: 'Temperature', count: 112 },
-            { name: 'Humidity', count: 98 },
-            { name: 'AirPollution', count: 78 }
+            { name: 'Température', Nombre: 112, color: COLORS['Température'] },
+            { name: 'Humidité', Nombre: 98, color: COLORS['Humidité'] },
+            { name: 'Pollution', Nombre: 78, color: COLORS['Pollution'] }
           ];
           setData(mockData);
           setLoading(false);
@@ -26,7 +32,6 @@ const SensorChartWidget = () => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -42,6 +47,23 @@ const SensorChartWidget = () => {
       </div>
     );
   }
+
+  // Créer un rendu personnalisé pour la légende avec les bonnes couleurs
+  const CustomLegend = (props) => {
+    const { payload } = props;
+    return (
+      <ul className="custom-legend">
+        {payload.map((entry, index) => (
+          <li key={`item-${index}`}>
+            <span 
+              className="legend-color" 
+              style={{ backgroundColor: data.find(item => item.name === entry.value)?.color }}
+            ></span>
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <div className="sensor-chart-widget">
@@ -62,9 +84,16 @@ const SensorChartWidget = () => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="count" fill="#8884d8" />
+            <Tooltip 
+              formatter={(value, name, props) => [value, 'Nombre de capteurs']}
+              labelFormatter={(label) => `Type: ${label}`}
+            />
+            <Legend content={<CustomLegend />} />
+            <Bar dataKey="Nombre">
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
