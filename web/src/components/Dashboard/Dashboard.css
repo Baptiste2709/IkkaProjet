@@ -19,6 +19,7 @@
   grid-template-columns: repeat(3, 1fr); /* 3 colonnes par défaut sur desktop */
   gap: 1.25rem;
   width: 100%;
+  grid-auto-flow: dense
 }
 
 /* Widget standard (1 colonne) */
@@ -47,6 +48,10 @@
 /* Widget pleine largeur (3 colonnes) */
 .widget-full {
   grid-column: span 3;
+}
+
+.widget-tall {
+  grid-row: span 1.5;
 }
 
 /* Responsive : Tablette */
