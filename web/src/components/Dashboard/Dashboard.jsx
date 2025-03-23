@@ -1,6 +1,7 @@
 // web/src/components/Dashboard/Dashboard.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.css';
+import FilterWidget from '../Widgets/FilterWidget/FilterWidget';
 import SensorCountWidget from '../Widgets/SensorCountWidget/SensorCountWidget';
 import SensorChartWidget from '../Widgets/SensorChartWidget/SensorChartWidget';
 import SensorGeoDistributionWidget from '../Widgets/SensorGeoDistributionWidget/SensorGeoDistributionWidget';
@@ -8,38 +9,55 @@ import MeasurementTrendsWidget from '../Widgets/MeasurementTrendsWidget/Measurem
 import WeatherWidget from '../Widgets/WeatherWidget/WeatherWidget';
 import SensorStatusWidget from '../Widgets/SensorStatusWidget/SensorStatusWidget';
 
-
 const Dashboard = () => {
+  // État pour stocker les filtres actifs
+  const [activeFilters, setActiveFilters] = useState({
+    user: 'all',
+    sensorType: 'all',
+    location: 'all',
+    room: 'all'
+  });
+  
+  // Fonction pour gérer les changements de filtres
+  const handleFilterChange = (filters) => {
+    console.log('Filtres mis à jour:', filters);
+    setActiveFilters(filters);
+    
+    // Ici, vous pourriez appeler votre API pour récupérer des données filtrées
+    // ou appliquer les filtres aux données locales
+  };
+  
   return (
     <div className="dashboard">
       <h1>P.E.IoT Dashboard by Habib & Baptiste</h1>
       
+      {/* Nouveau widget de filtrage */}
+      <FilterWidget onFilterChange={handleFilterChange} />
+      
       <div className="widgets-grid">
         <div className="widget-container widget-small">
-          <SensorCountWidget />
+          <SensorCountWidget filters={activeFilters} />
         </div>
         
         <div className="widget-container widget-small">
-          <SensorChartWidget />
+          <SensorChartWidget filters={activeFilters} />
         </div>
 
         <div className="widget-container widget-small">
-          <MeasurementTrendsWidget />
+          <MeasurementTrendsWidget filters={activeFilters} />
         </div>
 
         <div className="widget-container widget-large">
-          <WeatherWidget />
+          <WeatherWidget filters={activeFilters} />
         </div>
         
-      
         <div className="widget-container widget-small widget-tall">
-          <SensorStatusWidget />
+          <SensorStatusWidget filters={activeFilters} />
         </div>
 
         <div className="widget-container widget-full">
-          <SensorGeoDistributionWidget />
+          <SensorGeoDistributionWidget filters={activeFilters} />
         </div>
-
       </div>
     </div>
   );
