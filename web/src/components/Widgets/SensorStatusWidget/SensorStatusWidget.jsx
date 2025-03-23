@@ -95,6 +95,7 @@ const SensorStatusWidget = () => {
       </div>
       
       <div className="cardContent">
+        {/* Première ligne: Trois statistiques côte à côte */}
         <div className="statGrid">
           <div className="statBox">
             <p className="statLabel">Total Capteurs</p>
@@ -104,22 +105,38 @@ const SensorStatusWidget = () => {
             <p className="statLabel">Âge Moyen</p>
             <p className="statValue">{sensorData.averageAge} jours</p>
           </div>
+          <div className="statBox">
+            <p className="statLabel">Capteurs Actifs</p>
+            <p className="statValue">{sensorData.activeSensors}</p>
+          </div>
+          <div className="statBox">
+            <p className="statLabel">Capteurs Inactifs</p>
+            <p className="statValue">{sensorData.inactiveSensors}</p>
+          </div>
+          <div className="statBox">
+            <p className="statLabel">En Alerte</p>
+            <p className="statValue">{sensorData.warningState}</p>
+          </div>
+          <div className="statBox">
+            <p className="statLabel">Taux d'Activité</p>
+            <p className="statValue">{Math.round(sensorData.activeSensors/sensorData.totalSensors*100)}%</p>
+          </div>
         </div>
         
-        <div className="chartContainer">
-          <div className="chartHalf">
+        {/* Deuxième ligne: Distribution des états et Distribution par emplacement, côte à côte */}
+        <div className="chartGrid">
+          <div className="chartItem">
             <p className="chartTitle">État des Capteurs</p>
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height={150}>
               <PieChart>
                 <Pie
                   data={sensorData.statusDistribution}
                   cx="50%"
                   cy="50%"
-                  innerRadius={40}
-                  outerRadius={70}
+                  innerRadius={30}
+                  outerRadius={50}
                   paddingAngle={2}
                   dataKey="value"
-                  label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
                   labelLine={false}
                 >
                   {sensorData.statusDistribution.map((entry, index) => (
@@ -131,23 +148,23 @@ const SensorStatusWidget = () => {
                   layout="horizontal" 
                   verticalAlign="bottom"
                   align="center"
-                  iconSize={10}
+                  iconSize={8}
                   iconType="circle"
-                  formatter={(value) => <span style={{ fontSize: '0.75rem' }}>{value}</span>}
+                  formatter={(value) => <span style={{ fontSize: '0.7rem' }}>{value}</span>}
                 />
               </PieChart>
             </ResponsiveContainer>
           </div>
           
-          <div className="chartHalf">
+          <div className="chartItem">
             <p className="chartTitle">Répartition par Emplacement</p>
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height={150}>
               <PieChart>
                 <Pie
                   data={sensorData.locationDistribution}
                   cx="50%"
                   cy="50%"
-                  outerRadius={70}
+                  outerRadius={50}
                   dataKey="value"
                 >
                   {sensorData.locationDistribution.map((entry, index) => (
@@ -162,42 +179,42 @@ const SensorStatusWidget = () => {
                   layout="horizontal" 
                   verticalAlign="bottom"
                   align="center"
-                  iconSize={10}
+                  iconSize={8}
                   iconType="circle"
-                  formatter={(value) => <span style={{ fontSize: '0.75rem' }}>{value}</span>}
+                  formatter={(value) => <span style={{ fontSize: '0.7rem' }}>{value}</span>}
                 />
               </PieChart>
             </ResponsiveContainer>
           </div>
-        </div>
-        
-        <div>
-          <p className="sectionTitle">Capteurs Problématiques</p>
-          <div className="problemList">
-            {sensorData.problemSensors.length > 0 ? (
-              <div>
-                {sensorData.problemSensors.map((sensor, index) => (
-                  <div 
-                    key={sensor.id} 
-                    className={index === sensorData.problemSensors.length - 1 ? "problemItemLast" : "problemItem"}
-                  >
-                    <div className="flexRow">
-                      <XCircleIcon className="problemIcon" />
-                      <span className="problemText">
-                        {sensor.location} - {sensor.id}
+          
+          <div className="chartItem">
+            <p className="sectionTitle">Capteurs Problématiques</p>
+            <div className="problemList">
+              {sensorData.problemSensors.length > 0 ? (
+                <div>
+                  {sensorData.problemSensors.slice(0, 4).map((sensor, index) => (
+                    <div 
+                      key={sensor.id} 
+                      className={index === sensorData.problemSensors.slice(0, 4).length - 1 ? "problemItemLast" : "problemItem"}
+                    >
+                      <div className="flexRow">
+                        <XCircleIcon className="problemIcon" />
+                        <span className="problemText">
+                          {sensor.location} - {sensor.id.slice(-5)}
+                        </span>
+                      </div>
+                      <span className="problemStatus">
+                        {sensor.daysSinceLastActivity === "Jamais actif" 
+                          ? "Jamais actif" 
+                          : `${sensor.daysSinceLastActivity} jours`}
                       </span>
                     </div>
-                    <span className="problemStatus">
-                      {sensor.daysSinceLastActivity === "Jamais actif" 
-                        ? "Jamais actif" 
-                        : `${sensor.daysSinceLastActivity} jours`}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="emptyMessage">Aucun capteur problématique</p>
-            )}
+                  ))}
+                </div>
+              ) : (
+                <p className="emptyMessage">Aucun capteur problématique</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

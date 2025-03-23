@@ -55,10 +55,10 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* Grille pour les autres widgets */
+/* Grille pour les autres widgets - 3 colonnes égales */
 .widgets-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes au lieu de 4 */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   width: 100%;
 }
@@ -68,24 +68,20 @@
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: box-shadow 0.3s ease;
-  height: 400px; /* Augmenté la hauteur pour l'EnhancedSensorChartsWidget */
-  overflow: hidden; /* Assure que le contenu ne déborde pas */
+  height: 400px;
+  overflow: hidden;
 }
 
 .widget-container:hover {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.widget-large {
-  grid-column: span 2; /* Prend la place de deux colonnes */
-  height: 400px; /* Assurez-vous que le widget a suffisamment d'espace */
+/* Widget prenant 2 colonnes sur les 3 */
+.span-two {
+  grid-column: span 2;
 }
 
-.widget-small {
-  grid-column: span 1;
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .map-counter-container {
     flex-direction: column;
     height: auto;
@@ -98,18 +94,17 @@
   .counter-container {
     height: 200px;
   }
- 
-  .widgets-grid {
-    grid-template-columns: repeat(3, 1fr); /* Maintenir 3 colonnes sur tablette */
-  }
+}
 
-  .widget-large {
-    grid-column: span 2; /* Sur tablette, occupe toujours 2 colonnes */
+/* Responsive pour tablettes */
+@media (max-width: 900px) {
+  .widgets-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Responsive pour mobiles */
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .map-counter-container {
     flex-direction: column;
   }
@@ -119,11 +114,6 @@
   }
  
   .widget-container {
-    height: 350px; /* Hauteur légèrement réduite sur mobile */
-  }
-
-  .widget-large {
-    grid-column: span 1; /* Sur mobile, tous les widgets occupent la largeur complète */
-    height: 400px; /* Mais conserver plus d'espace pour l'EnhancedSensorChartsWidget */
+    height: 350px;
   }
 }

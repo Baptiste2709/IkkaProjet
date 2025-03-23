@@ -3,7 +3,6 @@ import './Dashboard.css';
 import FilterWidget from '../Widgets/FilterWidget/FilterWidget';
 import SensorChartWidget from '../Widgets/SensorChartWidget/SensorChartWidget';
 import SensorGeoDistributionWidget from '../Widgets/SensorGeoDistributionWidget/SensorGeoDistributionWidget';
-import MeasurementTrendsWidget from '../Widgets/MeasurementTrendsWidget/MeasurementTrendsWidget';
 import SensorStatusWidget from '../Widgets/SensorStatusWidget/SensorStatusWidget';
 import CombinedCountWidget from '../Widgets/CombinedCountWidget/CombinedCountWidget';
 
@@ -49,11 +48,7 @@ const Dashboard = () => {
             <SensorChartWidget filters={activeFilters} />
           </div>
          
-          <div className="widget-container widget-small">
-            <MeasurementTrendsWidget filters={activeFilters} />
-          </div>
-         
-          <div className="widget-container widget-small">
+          <div className="widget-container span-two">
             <SensorStatusWidget filters={activeFilters} />
           </div>
         </div>
