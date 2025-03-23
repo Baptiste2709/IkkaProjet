@@ -1,4 +1,4 @@
-.sensor-chart-widget {
+.enhanced-charts-widget {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.sensor-chart-widget:hover {
+.enhanced-charts-widget:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transform: translateY(-5px);
 }
@@ -17,6 +17,10 @@
 .widget-header {
   padding: 15px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .widget-header h3 {
@@ -26,20 +30,108 @@
   color: #2c3e50;
 }
 
-.widget-content {
-  flex-grow: 1;
-  padding: 15px;
+.tab-navigation {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 5px;
 }
 
-.widget-content.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.tab-button {
+  background-color: transparent;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
   color: #7f8c8d;
+}
+
+.tab-button:hover {
+  background-color: #f5f5f5;
+  color: #34495e;
+}
+
+.tab-button.active {
+  background-color: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+.widget-content {
+  flex-grow: 1;
+  padding: 15px 15px 40px 15px; /* Augmenté le padding en bas pour laisser de l'espace */
+  display: flex;
+  flex-direction: column;
+  height: 370px; /* Hauteur fixe pour s'assurer que tout le graphique est visible */
+}
+
+.chart-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Changé en flex-start pour éviter le centrage qui peut couper le bas */
+  height: 100%; /* Assurez-vous que le conteneur prend toute la hauteur disponible */
+  overflow: visible; /* Permet au contenu de déborder si nécessaire */
+}
+
+.chart-note {
+  text-align: center;
+  margin-top: 10px;
+  color: #7f8c8d;
+  font-size: 0.85rem;
   font-style: italic;
+}
+
+.loading-container,
+.empty-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #7f8c8d;
+  text-align: center;
+  padding: 20px;
+}
+
+.loading-spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+.empty-data-container svg {
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.empty-data-container p {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.reset-filters-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reset-filters-button:hover {
+  background-color: #2980b9;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Style personnalisé pour la légende */
@@ -48,13 +140,17 @@
   margin: 10px 0 0 0;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   list-style: none;
 }
 
 .custom-legend li {
+  margin: 0 10px;
+}
+
+.legend-item {
   display: flex;
   align-items: center;
-  margin: 0 10px;
 }
 
 .legend-color {
@@ -70,37 +166,23 @@
   color: #333333;
 }
 
-/* Style pour les tooltips */
-.recharts-tooltip-wrapper {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.recharts-default-tooltip {
-  background-color: white !important;
-  border: none !important;
-  border-radius: 5px;
-  padding: 8px 12px !important;
-}
-
-.recharts-tooltip-item {
-  margin-bottom: 3px;
-}
-
-/* Animation de transition pour les barres */
-.recharts-bar-rectangle {
-  transition: fill 0.3s ease;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .custom-legend {
+/* Responsive design */
+@media (max-width: 576px) {
+  .widget-header {
     flex-direction: column;
     align-items: flex-start;
   }
   
-  .custom-legend li {
-    margin: 2px 0;
+  .tab-navigation {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .tab-button {
+    flex: 1;
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 0.8rem;
   }
 }

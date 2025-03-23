@@ -1,0 +1,141 @@
+.combined-count-widget {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.combined-count-widget:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-5px);
+}
+
+.combined-count-widget h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+.counts-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.count-divider {
+  width: 1px;
+  height: 80px;
+  background-color: #eaeaea;
+}
+
+.count-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.count-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.count-icon:hover {
+  transform: scale(1.1);
+}
+
+.sensor-icon {
+  background-color: #e1f5fe;
+  color: #4285f4;
+}
+
+.user-icon {
+  background-color: #e8f5e9;
+  color: #34a853;
+}
+
+.count-details {
+  text-align: center;
+}
+
+.count-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.count-label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.additional-stats {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.stat-label {
+  color: #7f8c8d;
+}
+
+.stat-value {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.combined-count-widget.loading,
+.combined-count-widget.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .counts-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .count-divider {
+    width: 80%;
+    height: 1px;
+    margin: 0 auto;
+  }
+  
+  .count-value {
+    font-size: 2rem;
+  }
+}
