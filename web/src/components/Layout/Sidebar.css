@@ -1,0 +1,99 @@
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #1e293b;
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-logo {
+    margin-right: 0.75rem;
+  }
+  
+  .sidebar-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+  
+  .sidebar-nav {
+    flex: 1;
+    padding: 1.5rem 0;
+  }
+  
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 1rem;
+    border-left: 3px solid transparent;
+  }
+  
+  .sidebar-link:hover {
+    background-color: #334155;
+    color: #f8fafc;
+  }
+  
+  .sidebar-link.active {
+    background-color: #334155;
+    color: #f8fafc;
+    border-left-color: #3b82f6;
+  }
+  
+  .sidebar-icon {
+    margin-right: 0.75rem;
+  }
+  
+  .sidebar-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #334155;
+    font-size: 0.875rem;
+    color: #94a3b8;
+  }
+  
+  /* Pour les écrans plus petits, la sidebar devient un menu hamburger */
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+    
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    
+    .sidebar-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 101;
+      background-color: #1e293b;
+      border: none;
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      color: #f8fafc;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }

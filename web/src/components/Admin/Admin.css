@@ -1,0 +1,110 @@
+
+.admin-container {
+    padding: 1.5rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .admin-header {
+    margin-bottom: 2rem;
+  }
+  
+  .admin-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+  
+  .admin-subtitle {
+    color: #6b7280;
+    font-size: 1.1rem;
+  }
+  
+  .admin-card {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .card-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .construction-icon {
+    margin-bottom: 1.5rem;
+  }
+  
+  .construction-message {
+    font-size: 1.1rem;
+    color: #4b5563;
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+  
+  .features-coming {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .features-coming h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #374151;
+  }
+  
+  .features-coming ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+  
+  .features-coming li {
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .admin-container {
+      padding: 1.5rem;
+    }
+    
+    .admin-header h1 {
+      font-size: 1.75rem;
+    }
+    
+    .admin-subtitle {
+      font-size: 1rem;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .construction-message {
+      font-size: 1rem;
+    }
+  }

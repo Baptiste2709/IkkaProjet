@@ -1,4 +1,3 @@
-// web/src/components/Dashboard/Dashboard.jsx
 import React, { useState } from 'react';
 import './Dashboard.css';
 import FilterWidget from '../Widgets/FilterWidget/FilterWidget';
